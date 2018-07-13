@@ -1,6 +1,7 @@
-#!/bin/sh
+!/bin/bash -x
 
-set +x
+
+ 
 
 pushd source-code
   echo "Packaging JAR"
