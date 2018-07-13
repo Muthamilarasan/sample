@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-set -e +x
+set -ex
+echo "Building................"
 
 pushd source-code
   echo "Packaging JAR"
