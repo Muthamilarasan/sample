@@ -3,7 +3,7 @@ resources:
 - name: source-code
   type: git
   source:
-    uri: https://repo.west.com/mdurai01/SampleappforConcourse.git   #<----- REPLACE ME
+    uri: git@github.com:Muthamilarasan/sample.git   #<----- REPLACE ME
     username: {{git-user}}
     private_key: {{git-private}}
     branch: master
