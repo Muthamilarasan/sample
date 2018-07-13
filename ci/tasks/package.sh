@@ -1,4 +1,3 @@
-set -ex
 echo "Building................"
 
 pushd source-code
