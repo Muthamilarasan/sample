@@ -1,0 +1,33 @@
+---
+resources:
+- name: source-code
+  type: git
+  source:
+    uri: https://repo.west.com/mdurai01/SampleappforConcourse.git   #<----- REPLACE ME
+    username: {{git-user}}
+    private_key: {{git-private}}
+    branch: master
+    skip_cert_check: false
+
+- name: deploy-to-pcf
+  type: cf
+  source:
+    api: http://api.sys.pcfdev.one.west.com        #<----- REPLACE ME
+    username: {{cf-user}}
+    password: {{cf-password}}
+    organization: UCIOLPortal    #<----- REPLACE ME
+    space: dev         #<----- REPLACE ME
+    skip_cert_check: false
+
+jobs:
+- name: deploy
+  public: true
+  plan:
+  - get: source-code
+    trigger: true
+  - task: package
+    file: source-code/ci/tasks/package.yml
+  - put: deploy-to-pcf
+    params:
+      manifest: source-code/manifest.yml
+      path: package-output/application.jar
